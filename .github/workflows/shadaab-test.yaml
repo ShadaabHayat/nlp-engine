@@ -31,8 +31,8 @@ jobs:
           cpus: 2
           memory: 6144m
           # Assuming GITHUB_WORKSPACE=/home/runner/work/aicore-ingestion-engine/aicore-ingestion-engine
-          mount-path: "$GITHUB_WORKSPACE/platform/test/e2e-testing:/e2e-code"
+        #   mount-path: "$GITHUB_WORKSPACE/platform/test/e2e-testing:/e2e-code"
           # GITHUB_WORKSPACE substitution doesnt work here
-        #   mount-path: "/home/runner/work/aicore-ingestion-engine/aicore-ingestion-engine/platform/test/e2e-testing:/e2e-code"
+          mount-path: "/home/runner/work/aicore-ingestion-engine/aicore-ingestion-engine/platform/test/e2e-testing:/e2e-code"
           minikube-version: '1.35.0'
           kubernetes-version: 'v1.32.0'
