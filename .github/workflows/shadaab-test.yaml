@@ -34,6 +34,6 @@ jobs:
         #   mount-path: "$GITHUB_WORKSPACE/platform/test/e2e-testing:/e2e-code"
           # GITHUB_WORKSPACE substitution doesnt work here
         #   mount-path: "/home/runner/work/aicore-ingestion-engine/aicore-ingestion-engine/platform/test/e2e-testing:/e2e-code"
-          mount-path: "${{ github.github.workspace }}/platform/test/e2e-testing:/e2e-code"
+          mount-path: "${{ github.workspace }}/platform/test/e2e-testing:/e2e-code"
           minikube-version: '1.35.0'
           kubernetes-version: 'v1.32.0'
