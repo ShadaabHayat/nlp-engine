@@ -1,0 +1,38 @@
+name: Ingestion Engine E2E Test
+
+on:
+  workflow_dispatch:
+    inputs:
+      stub:
+        description: "Stub"
+        required: true
+        type: choice
+        options:
+          - 'Stub Value'
+
+jobs:
+  e2e-test:
+    name: E2E Test
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Print GITHUB_WORKSPACE
+        shell: bash
+        run: "echo $GITHUB_WORKSPACE"
+
+      - name: Setup Minikube
+        uses: medyagh/setup-minikube@latest
+        with:
+          cache: true
+          driver: podman
+          wait: false
+          cpus: 2
+          memory: 6144m
+          # Assuming GITHUB_WORKSPACE=/home/runner/work/aicore-ingestion-engine/aicore-ingestion-engine
+          mount-path: "$GITHUB_WORKSPACE/platform/test/e2e-testing:/e2e-code"
+          # GITHUB_WORKSPACE substitution doesnt work here
+        #   mount-path: "/home/runner/work/aicore-ingestion-engine/aicore-ingestion-engine/platform/test/e2e-testing:/e2e-code"
+          minikube-version: '1.35.0'
+          kubernetes-version: 'v1.32.0'
